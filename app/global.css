@@ -1,0 +1,97 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+
+@source "../node_modules/fumadocs-ui/dist/**/*.js";
+
+/*
+  Conta — sistema de marca v1 aplicado ao Fumadocs.
+  Cinco cores, baixa saturação. Petrol é o único acento de ação.
+  Os tokens --color-fd-* são os que o Fumadocs consome; abaixo eles são
+  remapeados para a paleta da marca em vez do cinza neutro padrão.
+*/
+
+@theme {
+  --color-cream: #f4f1ea;
+  --color-cream-2: #ede9df;
+  --color-cream-3: #e4dfd2;
+
+  --color-petrol: #2c6e7d;
+  --color-petrol-ink: #1b4a55;
+  --color-petrol-light: #7fb8c6;
+
+  --color-ink: #15252b;
+  --color-ink-2: #3a4a4f;
+  --color-ink-3: #6b7679;
+
+  --color-sage: #6e8e73;
+
+  --color-line: #d9d3c4;
+  --color-line-strong: #b9b2a2;
+
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
+}
+
+/* ---- Tema claro: cream quente, não branco clínico ---- */
+:root {
+  --color-fd-background: #f4f1ea;
+  --color-fd-foreground: #15252b;
+  --color-fd-muted: #ede9df;
+  --color-fd-muted-foreground: #6b7679;
+  --color-fd-popover: #f8f6f1;
+  --color-fd-popover-foreground: #15252b;
+  --color-fd-card: #ede9df;
+  --color-fd-card-foreground: #15252b;
+  --color-fd-border: #d9d3c4;
+  --color-fd-primary: #2c6e7d;
+  --color-fd-primary-foreground: #f4f1ea;
+  --color-fd-secondary: #e4dfd2;
+  --color-fd-secondary-foreground: #1b4a55;
+  --color-fd-accent: #e4dfd2;
+  --color-fd-accent-foreground: #1b4a55;
+  --color-fd-ring: #2c6e7d;
+  --color-fd-overlay: rgba(21, 37, 43, 0.2);
+}
+
+/* ---- Tema escuro: ink profundo, mesma temperatura ---- */
+.dark {
+  --color-fd-background: #101b1f;
+  --color-fd-foreground: #e9e5db;
+  --color-fd-muted: #17262b;
+  --color-fd-muted-foreground: #9aa5a7;
+  --color-fd-popover: #17262b;
+  --color-fd-popover-foreground: #e9e5db;
+  --color-fd-card: #16242a;
+  --color-fd-card-foreground: #e9e5db;
+  --color-fd-border: rgba(217, 211, 196, 0.14);
+  --color-fd-primary: #7fb8c6;
+  --color-fd-primary-foreground: #101b1f;
+  --color-fd-secondary: #1c2f35;
+  --color-fd-secondary-foreground: #e9e5db;
+  --color-fd-accent: #1c2f35;
+  --color-fd-accent-foreground: #e9e5db;
+  --color-fd-ring: #7fb8c6;
+  --color-fd-overlay: rgba(0, 0, 0, 0.35);
+}
+
+/* Sem cores de alerta na marca: callouts herdam petrol/sage em vez de
+   vermelho/laranja. Só o estado de erro real mantém contraste próprio. */
+:root,
+.dark {
+  --color-fd-info: var(--color-fd-primary);
+  --color-fd-idea: var(--color-sage);
+}
+
+/* Títulos em serifa (display), corpo em grotesk — igual ao app. */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Hairlines quentes em tabelas, iguais às do app. */
+#nd-page table {
+  font-size: 0.9rem;
+}

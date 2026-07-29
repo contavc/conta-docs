@@ -1,0 +1,75 @@
+---
+title: Stack and choices
+description: The technologies behind Conta and the reasoning for each one.
+---
+
+## The overall picture
+
+| Layer | Choice | Why |
+| --- | --- | --- |
+| Framework | Next.js 16 (App Router, Turbopack) | Server Components cut shipped JS; one project serves the UI and the few server routes |
+| UI | React 19 + Tailwind 4 | Tailwind 4 configures the design system in CSS, with no JS config file |
+| Language | Strict TypeScript | No `any`, with `noUncheckedIndexedAccess` — indexed access yields `T \| undefined` |
+| Chain | viem | Typed, explicit API; none of ethers' legacy surface |
+| Auth and wallet | Privy | Passkey plus embedded wallet without the key passing through us |
+| Database | Supabase (Postgres) | Managed Postgres with good DX; used as cache, not as authority |
+| Validation | Zod | One schema per boundary: every API route and every environment variable |
+| Observability | Sentry | Error capture on client, server and edge |
+| Deploy | Vercel | Native Next integration, cron included |
+
+## Why Base
+
+An EVM L2 with transaction costs low enough that sponsoring gas on every user
+operation is economically viable. On an L1, the "users need no ETH" model would
+be too expensive to sustain.
+
+Being EVM, the user's wallet is a standard EOA: legible and usable by any tool
+in the ecosystem, not a proprietary format of ours.
+
+## Why BRLA
+
+An ERC-20 stablecoin pegged 1:1 to the Brazilian real, with 18 decimals.
+
+The peg matters for a practical reason: users think in reais, and their balance
+**is** in reais. There is no hidden FX exposure between deposit and withdrawal,
+and no currency conversion to explain in the interface.
+
+The 18 decimals make cent conversion exact in integer arithmetic — no rounding
+anywhere on a money path. See
+[Data and ledger](/en/docs/arquitetura/dados).
+
+## Why passkeys instead of a seed phrase
+
+Seed phrases are the single largest adoption barrier in self-custody, and the
+largest source of irreversible loss. Passkeys deliver the same property — the
+key is with the user, not with us — using a mechanism the operating system
+already manages, syncs and protects with biometrics.
+
+Users learn nothing new. They unlock with their face or fingerprint, exactly as
+they already do everywhere else on the phone.
+
+## Code conventions
+
+<Cards>
+  <Card title="Strict TypeScript" description="No any. noUncheckedIndexedAccess on — every indexed access must be handled as possibly undefined." />
+  <Card title="Server Components by default" description="Client Components only where hooks or state are needed. Less JavaScript on the device." />
+  <Card title="Zod at every boundary" description="API routes and environment variables are schema-validated. Unvalidated input does not get in." />
+  <Card title="Split languages" description="Interface in Portuguese. Code, commits and identifiers in English." />
+</Cards>
+
+## Environments
+
+The app runs against **Base Sepolia** in development and **Base mainnet** in
+production. Switching is one environment variable.
+
+A practical consequence: the dollar rails depend on contracts that only exist
+on mainnet, so they are not testable on Sepolia. The PIX rails work on both.
+
+## Tests
+
+Vitest covers the logic that carries money risk: rail state machines,
+conversion arithmetic, BR Code parsing, webhook verification, concurrency
+guards. Practically every module under `lib/` has a `.test.ts` beside it.
+
+What gets tested is chosen by the same criterion as everything else in the
+system: what, if wrong, moves money to the wrong place.

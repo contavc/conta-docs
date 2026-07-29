@@ -1,0 +1,95 @@
+---
+title: Dados e ledger
+description: O que o banco de dados guarda, por que ele não é a autoridade sobre saldo, e como o extrato é montado.
+---
+
+## A divisão de responsabilidade
+
+| Pergunta | Respondida por |
+| --- | --- |
+| Quanto o usuário tem? | A chain (saldo BRLA da carteira dele) |
+| Esse PIX de ontem foi pra quem? | O banco (`ledger_entries`) |
+| Aquele saque está em que etapa? | O banco (tabela da rail) |
+| Esse QR já foi pago? | Chain + banco, cruzados |
+
+O banco nunca é consultado para saber **se o usuário pode gastar**. Isso é
+decidido pelo saldo on-chain no momento em que a transação é assinada — e, em
+última instância, pelo próprio contrato do BRLA, que rejeita uma transferência
+sem saldo.
+
+## Representação de dinheiro
+
+Uma escolha pequena com grandes consequências: **todo valor monetário é um
+inteiro em centavos**. Não existe ponto flutuante em nenhum caminho de
+dinheiro.
+
+O BRLA é um ERC-20 com 18 casas decimais e paridade 1:1 com o real, então a
+conversão para unidades on-chain é exata:
+
+```ts
+// lib/evm/token.ts
+export const BRLA_DECIMALS = 18;
+
+export function centsToTokenRaw(cents: number): bigint {
+  return BigInt(cents) * 10n ** BigInt(BRLA_DECIMALS - 2); // cents * 10^16
+}
+```
+
+A API da Hodle também trabalha em centavos, então não existe fronteira de
+conversão para reais fracionários em lugar nenhum do sistema.
+
+## As tabelas
+
+O schema é cumulativo e vive em `supabase/schema.sql`. Os grupos:
+
+<Accordions>
+<Accordion title="Identidade e perfil">
+`users`, `profiles` — vínculo entre a identidade Privy (DID), o endereço da
+carteira, o username público e os dados de perfil. `invite_codes` controla o
+acesso durante a fase de convites.
+</Accordion>
+
+<Accordion title="Estado das rails">
+`deposit_qrs` (on-ramp), `ramp_orders` (off-ramp), `qr_payments` (QR-pay),
+`p2p_transfers` (transferências entre usuários), `money_links` e
+`money_link_claims` (links de dinheiro). Cada linha é a máquina de estados de
+uma operação em voo.
+</Accordion>
+
+<Accordion title="Integridade">
+`consumed_funding_hashes` — o guard entre rails. `webhook_events` — registro
+de tudo que a Hodle entregou, gravado antes de ser processado.
+</Accordion>
+
+<Accordion title="Contabilidade e operação">
+`ledger_entries` — o extrato. `app_settings` — toggles operacionais, como o
+patrocínio de taxas. `admins` — controle de acesso ao painel operacional.
+</Accordion>
+</Accordions>
+
+## O ledger
+
+`ledger_entries` é a fonte do extrato exibido ao usuário. Cada rail publica
+sua entrada num ponto bem definido do fluxo — on-ramp quando o crédito
+on-chain é observado, off-ramp quando o débito é confirmado, e assim por
+diante.
+
+Duas propriedades importam:
+
+**Referência idempotente.** Cada entrada carrega um `ledgerRef` derivado do
+tipo da rail e do id da linha de origem (`onramp:<qrId>`, por exemplo). Postar
+a mesma entrada duas vezes não duplica o extrato — é o que permite que o
+webhook e o poll de reconciliação disputem a mesma conclusão sem estragar a
+contabilidade.
+
+**Valor observado, não nominal.** No on-ramp, a Hodle deduz a taxa dela do
+BRLA entregue. Quando o valor realmente creditado on-chain é conhecido, é
+**ele** que vai para o ledger — não o valor nominal do PIX. O extrato reflete
+o que aconteceu na chain, não o que era esperado.
+
+## Cruzamento com a chain
+
+Como o banco é derivado, ele pode divergir. O sistema trata isso como normal e
+tem dois mecanismos de convergência — o poll de reconciliação e a varredura
+periódica — descritos em
+[Webhooks e reconciliação](/docs/rails/reconciliacao).

@@ -1,0 +1,91 @@
+---
+title: Data and ledger
+description: What the database stores, why it is not the authority on balance, and how the statement is assembled.
+---
+
+## The division of responsibility
+
+| Question | Answered by |
+| --- | --- |
+| How much does the user have? | The chain (their wallet's BRLA balance) |
+| Who did yesterday's PIX go to? | The database (`ledger_entries`) |
+| What stage is that withdrawal at? | The database (the rail's table) |
+| Has this QR code been paid? | Chain and database, cross-checked |
+
+The database is never consulted to decide **whether a user may spend**. That is
+decided by the on-chain balance at the moment the transaction is signed — and
+ultimately by the BRLA contract itself, which rejects a transfer without funds.
+
+## Money representation
+
+A small choice with large consequences: **every monetary value is an integer
+number of cents**. There is no floating point anywhere on a money path.
+
+BRLA is an ERC-20 with 18 decimals pegged 1:1 to the real, so conversion to
+on-chain units is exact:
+
+```ts
+// lib/evm/token.ts
+export const BRLA_DECIMALS = 18;
+
+export function centsToTokenRaw(cents: number): bigint {
+  return BigInt(cents) * 10n ** BigInt(BRLA_DECIMALS - 2); // cents * 10^16
+}
+```
+
+Hodle's API also works in cents, so there is no conversion boundary to
+fractional reais anywhere in the system.
+
+## The tables
+
+The schema is cumulative and lives in `supabase/schema.sql`. The groups:
+
+<Accordions>
+<Accordion title="Identity and profile">
+`users`, `profiles` — the link between the Privy identity (DID), the wallet
+address, the public username and profile data. `invite_codes` gates access
+during the invite phase.
+</Accordion>
+
+<Accordion title="Rail state">
+`deposit_qrs` (on-ramp), `ramp_orders` (off-ramp), `qr_payments` (QR-pay),
+`p2p_transfers` (user-to-user transfers), `money_links` and
+`money_link_claims`. Each row is the state machine of one in-flight operation.
+</Accordion>
+
+<Accordion title="Integrity">
+`consumed_funding_hashes` — the cross-rail guard. `webhook_events` — a record
+of everything Hodle delivered, written before it is processed.
+</Accordion>
+
+<Accordion title="Accounting and operations">
+`ledger_entries` — the statement. `app_settings` — operational toggles, such as
+fee sponsorship. `admins` — access control for the operations panel.
+</Accordion>
+</Accordions>
+
+## The ledger
+
+`ledger_entries` is the source of the statement shown to users. Each rail posts
+its entry at a well-defined point in the flow — on-ramp when the on-chain
+credit is observed, off-ramp when the debit is confirmed, and so on.
+
+Two properties matter:
+
+**Idempotent reference.** Each entry carries a `ledgerRef` derived from the
+rail type and the originating row id (`onramp:<qrId>`, for example). Posting
+the same entry twice does not duplicate the statement — which is what allows
+the webhook and the reconciliation poll to race for the same conclusion
+without corrupting accounting.
+
+**Observed amount, not nominal.** On the on-ramp, Hodle deducts its own fee
+from the delivered BRLA. When the amount actually credited on-chain is known,
+**that** is what goes into the ledger — not the nominal PIX amount. The
+statement reflects what happened on the chain, not what was expected.
+
+## Cross-checking against the chain
+
+Because the database is derived, it can diverge. The system treats that as
+normal and has two convergence mechanisms — the reconciliation poll and the
+periodic sweep — described in
+[Webhooks and reconciliation](/en/docs/rails/reconciliacao).
