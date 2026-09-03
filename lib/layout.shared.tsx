@@ -14,6 +14,11 @@ export function baseOptions(lang: string): BaseLayoutProps {
     },
     links: [
       {
+        text: pt ? "Site da Conta" : "Conta website",
+        url: "https://conta.vc",
+        external: true,
+      },
+      {
         text: pt ? "Abrir o app" : "Open the app",
         url: "https://app.conta.vc",
         external: true,
