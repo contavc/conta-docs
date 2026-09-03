@@ -42,6 +42,9 @@ export default async function RootLayout({
       className={`${hanken.variable} ${newsreader.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="describedby" href="/llms.txt" type="text/markdown" />
+      </head>
       <body className="flex min-h-screen flex-col">
         <RootProvider i18n={i18n.provider(lang)}>{children}</RootProvider>
       </body>
