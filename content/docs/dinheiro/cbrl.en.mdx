@@ -4,8 +4,10 @@ description: A balance in reais that lets Conta work with different stablecoin p
 ---
 
 You've seen how a stablecoin connects digital assets to a familiar currency.
-**cBRL**, or contaBRL, is Conta's token. Its model represents value backed by
-Brazilian real stablecoins, such as **BRLA** and **BRS**, in the user's wallet.
+**cBRL**, or contaBRL, is the token used for your balance in reais at Conta.
+In the current Base deployment, **BRLA** is the configured backing asset. The
+model can also integrate other compatible real-denominated stablecoins, such
+as BRS; this does not mean both back the current deployment.
 
 A stablecoin is a digital asset designed to track a currency. Here, the
 reference is the Brazilian real: the aim is to keep **1 unit equivalent
@@ -18,13 +20,14 @@ If it becomes unavailable, that dependence can interrupt the path used to
 receive or send money.
 
 cBRL separates the balance presented to the user from the integration with
-a specific stablecoin. This lets Conta work with alternatives such as BRLA
-and BRS while keeping one cBRL balance experience.
+a specific stablecoin. This can support compatible alternatives while keeping one cBRL balance
+experience, once those alternatives are actually available.
 
 ## Another path when a provider is unavailable
 
-With another compatible provider integrated and available, Conta can direct
-new operations through it. The user keeps the same balance reference without
+If another compatible provider is integrated and available, Conta can direct
+new operations through it. That would not automatically recover a payment
+already in progress or release backing held by an unavailable provider. The user keeps the same balance reference without
 having to choose a new token for each payment path.
 
 This is the idea of **redundancy**: having an alternative to reduce dependence
