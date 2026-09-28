@@ -1,53 +1,36 @@
 ---
 title: Guardar e receber contribuições
-description: Entenda seus depósitos, as regras opcionais e as contribuições da Conta.
+description: Depósitos, Modo Guardar, Conta Match e rendimento da Reserva.
 ---
 
-Sua Reserva dá um lugar ao dinheiro guardado. Você escolhe como colocar
-dinheiro nela.
+Sua Reserva mantém cBRL separado do saldo disponível. Ela está disponível para contas elegíveis; as regras automáticas só começam depois que você as ativa.
 
 ## Escolha um valor ou ative uma regra
 
-Você pode fazer um **depósito manual**, movendo um valor do saldo disponível
-na Conta para a Reserva.
+Você pode fazer um **depósito manual** do seu saldo disponível, mesmo com o Modo Guardar pausado. O depósito não gera Match.
 
-Também pode ativar o **Modo Guardar**. Suas regras opcionais podem separar
-um percentual de operações elegíveis com cripto ou arredondar pagamentos
-PIX. Elas passam a valer depois da sua ativação; ter uma Reserva não
-ativa essas regras por você.
+No **Modo Guardar**, você pode ativar o arredondamento de pagamentos PIX e escolher um percentual para guardar em conversões e envios de cripto elegíveis. As regras valem para operações futuras confirmadas. Em uma conversão, a parte guardada sai do valor convertido; em um envio de cripto, ela é somada ao débito e aparece antes da confirmação, sem reduzir o valor enviado ao destinatário.
 
-Por exemplo, arredondar um pagamento de R$ 12,40 para o próximo real
-separa R$ 0,60. O valor guardado vem do seu dinheiro, separado do pagamento
-ao destinatário.
+Um PIX de R$ 12,40, por exemplo, pode separar mais R$ 0,60 do seu saldo para a Reserva. O destinatário continua recebendo R$ 12,40. O arredondamento não gera Match, e um recebimento PIX ou uma transferência entre contas Conta, por si só, também não gera Match.
 
-## Seu dinheiro e as contribuições da Conta
-
-Vale distinguir três partes:
+## Seu dinheiro, Match e rendimento
 
 | Parte | O que significa |
 | --- | --- |
-| Seus depósitos | Dinheiro que você moveu para a Reserva, manualmente ou por uma regra. |
-| Match | Contribuição da Conta ligada a atividades elegíveis de guardar, conforme as condições do programa. |
-| Rendimento | Créditos financiados pela Conta em seu programa de rendimento da Reserva. |
+| Seus depósitos | cBRL que você guardou manualmente ou pelas regras automáticas. |
+| Conta Match | Contribuição da Conta vinculada ao percentual guardado em operações de cripto elegíveis, sujeita às regras e à verba do programa. |
+| Rendimento | Crédito separado, financiado pela Conta sobre o saldo elegível da Reserva. |
 
-Colocar cBRL em um vault não gera rendimento por si só. O rendimento vem
-de um programa separado, financiado pela Conta. Consulte a taxa e as
-condições atuais no app; um crédito previsto ou pendente é diferente
-de dinheiro já creditado.
+O percentual escolhido para cripto é calculado sobre o valor bruto da conversão, antes da tarifa de 2,5%. Parte dessa tarifa financia o Match, sem tarifa extra para a recompensa. No início do ciclo, a Conta pode igualar a contribuição elegível. Depois que você guarda R$ 100 do seu dinheiro no ciclo, o Match+ acrescenta 0,25 ponto percentual à taxa da contribuição da Conta. Apenas os primeiros R$ 500 guardados em cada ciclo de 30 dias podem gerar Match; há também um limite de recompensas e uma verba disponível, mostrados no app. Você pode continuar guardando depois desses limites, sem novo Match.
 
-Depósitos manuais não geram Match. Valores guardados automaticamente em
-operações elegíveis podem recebê-lo conforme as regras do programa.
+Cada contribuição da Conta fica **pendente por 30 dias**. Esse prazo é próprio de cada contribuição, não uma trava sobre o dinheiro que você guardou. Resgatar antes da confirmação pode cancelar a parte pendente ligada ao valor retirado; o app mostra o efeito antes de confirmar. Match já confirmado permanece seu.
 
-## Quando você precisar do dinheiro
+## Como funciona o rendimento
 
-Você pode solicitar um resgate para seu saldo na Conta. Resgatar antes
-da confirmação de um Match relacionado pode cancelar essa contribuição
-pendente. O app mostra o efeito na revisão do resgate.
+A taxa exibida atualmente é de **6% ao ano (APY)**, financiada pela Conta. O vault não gera rendimento por si só, e o APY não vem automaticamente das reservas do cBRL. Depósitos manuais também entram no cálculo quando o programa está ativo; pausar as regras automáticas não para o rendimento sobre o saldo elegível.
 
-Desativar as regras para guardar no futuro mantém o dinheiro que já está
-na Reserva até você escolher resgatá-lo.
+O cálculo considera o saldo elegível e o tempo que ele ficou guardado em cada dia UTC. Um crédito é feito no máximo uma vez por dia, quando o valor devido chega a **R$ 0,01**; frações menores continuam acumuladas. O valor ganho mas ainda não creditado aparece separado do saldo disponível. Confira no app a taxa e as condições atuais.
 
-Agora que você viu como separar dinheiro, vamos entender como outros
-ativos digitais podem se tornar parte do seu saldo na Conta.
+Você pode resgatar seu dinheiro para o saldo Conta a qualquer momento, sujeito à confirmação da operação. Desativar o Modo Guardar impede novos depósitos automáticos, mas não retira o que já está na Reserva.
 
 A seguir: [Magic Swap →](/docs/pagamentos/magic-swap)
