@@ -26,6 +26,14 @@ claim that every merged internal or pilot change belongs in public docs.
 - Open signup: app PR #636 and backend PR #145 removed invitation admission
   and report production rollout. No invitation requirement is asserted in
   this guided concept site; the website owns signup instructions.
+- Push notifications: app PRs #475 and #495 implement per-device opt-in,
+  activity/status categories and payment details. The product owner confirmed
+  on 2026-09-28 that push is live for everyone. Payment pushes may show the
+  amount and sender name, so do not repeat the original #475's generic-body
+  privacy description after #495. Delivery still depends on device/browser
+  permission and a subscription; the transaction history remains authoritative.
+  This public rollout does not imply that the separately disabled background
+  PIX flow or private BRS pilot is available to everyone.
 - Referral vault claims: app PRs #544 and #573, backend PR #89 and the
   activated contract describe direct cBRL vault claims and the conditional
   25% post-activation bonus after 30 days of retained supporting principal.
