@@ -4,9 +4,10 @@ description: Um saldo em reais que permite à Conta trabalhar com diferentes pro
 ---
 
 Você já viu como uma stablecoin conecta ativos digitais a uma moeda familiar.
-O **cBRL**, ou contaBRL, é o token da Conta. Seu modelo é representar, na
-carteira do usuário, um valor lastreado em stablecoins de real, como **BRLA**
-e **BRS**.
+O **cBRL**, ou contaBRL, é o token usado como saldo em reais na Conta.
+Na implantação atual na rede Base, o lastro configurado é **BRLA**. O modelo
+também permite integrar outras stablecoins de real compatíveis, como BRS,
+sem que isso signifique que ambas já componham o lastro atual.
 
 Uma stablecoin é um ativo digital criado para acompanhar uma moeda. Nesse caso,
 a referência é o real brasileiro: o objetivo é manter **1 unidade equivalente
@@ -19,13 +20,14 @@ Se ele ficar indisponível, essa dependência pode interromper o caminho usado
 para receber ou enviar dinheiro.
 
 O cBRL separa o saldo apresentado ao usuário da integração com uma stablecoin
-específica. Isso permite à Conta trabalhar com alternativas, como BRLA e BRS,
-mantendo uma experiência de saldo em cBRL.
+específica. Isso permite integrar alternativas compatíveis mantendo a experiência de
+saldo em cBRL, quando essas alternativas estiverem de fato disponíveis.
 
 ## Ter outro caminho quando um provedor está fora
 
-Com outro provedor compatível integrado e disponível, a Conta pode direcionar
-novas operações por ele. O usuário continua com a mesma referência de saldo,
+Se outro provedor compatível estiver integrado e disponível, a Conta poderá
+direcionar novas operações por ele. Isso não recupera automaticamente uma
+operação em andamento nem libera lastro retido em um provedor indisponível. O usuário continua com a mesma referência de saldo,
 sem precisar escolher um novo token para cada caminho de pagamento.
 
 Essa é a ideia de **redundância**: ter uma alternativa para reduzir a dependência
