@@ -110,8 +110,9 @@ wallet signing authority (`contavc/conta-contracts/src/ContaBRL.sol`).
 
 Current `contavc/conta/app/(app)/send/page.tsx` keeps PIX send rails
 available without approved KYC, while `phase54-foreign-pix-kyc.sql` limits
-unverified Brazilian PIX receipts and requires approval for foreign-account
-receipts. The current public `conta.vc/ajuda` text claims PIX is unavailable in
+unverified Brazilian PIX receipts to R$500 per deposit and R$1,000 per
+rolling 24 hours (including pending QR reservations), and requires approval
+for foreign-account receipts. The current public `conta.vc/ajuda` text claims PIX is unavailable in
 both directions before verification; it must be reconciled with the shipped
 app behavior rather than copied into these docs.
 
