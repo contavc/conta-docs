@@ -6,9 +6,9 @@ description: Ways to send money to other people with Conta.
 Once money is in your available balance, you can choose where to send it.
 Which methods are available depends on account status, limits and the
 transaction.
-A transfer's destination can be a PIX key, another person on Conta or someone
-you share a money link with. Each option helps identify the recipient in a
-different way.
+A transfer's destination can be a PIX key, another person on Conta, someone
+you share a money link with, or an external wallet. Each option identifies
+the recipient in a different way.
 
 ## Between people on Conta
 
@@ -28,6 +28,12 @@ The link grants access to the claim, so share it only with the intended
 recipient. It is a way of sending value through a conversation or message
 without agreeing on every transfer detail in advance.
 
+## Sending crypto to another wallet
+
+You can also send a supported asset, such as digital dollars, to an external address on the network shown in the app. Check the **asset, network, address, amount and quote** before authorising. Your cBRL balance may need to be converted to the asset being sent; the confirmation shows the final value and fees. A wrong address or network may make recovery impossible.
+
+To receive crypto, use the address and network Conta shows for your chosen asset. A supported incoming asset may go through Magic Swap before it appears as a real-denominated balance; not every received token has an available conversion.
+
 ## Choosing a method
 
 | Method | How the recipient is identified |
@@ -35,6 +41,7 @@ without agreeing on every transfer detail in advance.
 | PIX | Through a key or QR code details. |
 | Transfer within Conta | Through a profile or username. |
 | Money link | Through access to the shared claim link. |
+| Crypto to an external wallet | Through the destination wallet's address, asset and network. |
 
 Sending and receiving PIX do not have exactly the same conditions: the app
 allows PIX sends without the identity approval used for some other flows,
@@ -45,3 +52,5 @@ verification to receive PIX. Check the app for your transaction's limits.
 
 The history helps you follow the result. An operation that has started may
 still await confirmation before it is complete.
+
+Next: [payment links and receipts →](/en/docs/pagamentos/receber-e-comprovantes)

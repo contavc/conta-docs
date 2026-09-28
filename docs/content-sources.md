@@ -5,6 +5,44 @@ Repository names and implementation details belong here, not in the reader's jou
 
 Reviewed on 2026-09-27; release claims rechecked on 2026-09-28:
 
+The 2026-09-28 merged-feature audit also checked the app's August and September
+PRs against production rollouts. This is a release-evidence checkpoint, not a
+claim that every merged internal or pilot change belongs in public docs.
+
+- Public payment links and fixed charges: `contavc/conta` PRs #296, #377 and
+  #378 establish anonymous PIX checkout, charge states and approved-KYC owner
+  eligibility. `contavc/conta-backend` PR #137 and app PR #628 record that
+  the owner routes were opened to everyone and their legacy proxies retired.
+  App PR #423 also implements Base USDC checkout, but explicitly says it
+  defaults off pending funded activation; public docs therefore describe the
+  verified PIX route and tell readers to follow the available options.
+- Shareable receipts: app PR #614 and backend PR #129 record the `/receipt/:id`
+  public route and every-owner rollout. The older `/callback` URL was removed.
+  Receipt data is visible to holders of the opaque link without login.
+- Older public flows: app PRs #27 and #35 introduced external digital-dollar
+  sends, #49 and #50 introduced digital-dollar receiving, and PR #325 opened
+  passkey management to everyone. The public pages explain the concepts and
+  link to the website for exact steps and currently supported assets/networks.
+- Open signup: app PR #636 and backend PR #145 removed invitation admission
+  and report production rollout. No invitation requirement is asserted in
+  this guided concept site; the website owns signup instructions.
+- Referral vault claims: app PRs #544 and #573, backend PR #89 and the
+  activated contract describe direct cBRL vault claims and the conditional
+  25% post-activation bonus after 30 days of retained supporting principal.
+  The referral UI is distinct from the initially pilot-only Reserva UI;
+  app PR #640 and backend PR #148 subsequently opened Reserva itself to all
+  eligible accounts.
+- Daily Reserve yield: backend PRs #142 and #148 document public activation;
+  backend PR #159 confirms the first production cBRL credits on 2026-09-28
+  and records remaining scheduler reconciliation. This supports the existing
+  6% APY explanation without promising any particular user's payout.
+- Not yet a public availability claim: app `docs/agent-key-budgets.md` says
+  agent management retains a username/account-mode pilot despite its 2026-09-19
+  production deployment. App PR #419 describes BRS on Solana as a private
+  pilot. App PR #484 keeps event QR creation on an allowlist. App PR #423
+  leaves Base USDC link checkout disabled by default. A merged implementation
+  or production deploy alone does not remove these gates.
+
 - `contavc/conta`: `lib/privy/config.ts` confirms passkey access and an embedded
   wallet. `lib/evm/cbrl.ts` describes the cBRL wrapping model. The app and its
   existing payment documentation inform the high-level PIX and crypto explanation.

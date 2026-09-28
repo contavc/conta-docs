@@ -3,6 +3,7 @@
   "defaultOpen": true,
   "pages": [
     "magic-swap",
-    "transferencias"
+    "transferencias",
+    "receber-e-comprovantes"
   ]
 }
