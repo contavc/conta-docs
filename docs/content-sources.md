@@ -3,7 +3,7 @@
 The public docs explain Conta's main concepts to prospective users and investors.
 Repository names and implementation details belong here, not in the reader's journey.
 
-Reviewed on 2026-09-27:
+Reviewed on 2026-09-27; release claims rechecked on 2026-09-28:
 
 - `contavc/conta`: `lib/privy/config.ts` confirms passkey access and an embedded
   wallet. `lib/evm/cbrl.ts` describes the cBRL wrapping model. The app and its
@@ -53,9 +53,8 @@ Sources reviewed for overlap:
 - https://www.conta.vc/precos
 
 Usage metrics remain undecided and are not published. Business model, revenue,
-fundraising and roadmap content remain out of scope. Token administration details
-are omitted from the public concept pages; this does not justify claims of
-unrestricted or risk-free assets.
+fundraising and roadmap content remain out of scope. The public wallet page now names the relevant token-level administrative
+powers without exposing operational runbooks or implying unrestricted assets.
 
 ## Why cBRL
 
