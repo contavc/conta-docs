@@ -1,0 +1,62 @@
+---
+title: Por que cBRL?
+description: Um saldo em reais que permite à Conta trabalhar com diferentes provedores de stablecoins.
+---
+
+Você já viu como uma stablecoin conecta ativos digitais a uma moeda familiar.
+O **cBRL**, ou contaBRL, é o token usado como saldo em reais na Conta.
+Na implantação atual na rede Base, o lastro configurado é **BRLA**. O modelo
+também permite integrar outras stablecoins de real compatíveis, como BRS,
+sem que isso signifique que ambas já componham o lastro atual.
+
+Uma stablecoin é um ativo digital criado para acompanhar uma moeda. Nesse caso,
+a referência é o real brasileiro: o objetivo é manter **1 unidade equivalente
+a R$ 1**.
+
+## Reduzir a dependência de um único provedor
+
+Usar apenas uma stablecoin pode concentrar as operações em um único provedor.
+Se ele ficar indisponível, essa dependência pode interromper o caminho usado
+para receber ou enviar dinheiro.
+
+O cBRL separa o saldo apresentado ao usuário da integração com uma stablecoin
+específica. Isso permite integrar alternativas compatíveis mantendo a experiência de
+saldo em cBRL, quando essas alternativas estiverem de fato disponíveis.
+
+## Ter outro caminho quando um provedor está fora
+
+Se outro provedor compatível estiver integrado e disponível, a Conta poderá
+direcionar novas operações por ele. Isso não recupera automaticamente uma
+operação em andamento nem libera lastro retido em um provedor indisponível. O usuário continua com a mesma referência de saldo,
+sem precisar escolher um novo token para cada caminho de pagamento.
+
+Essa é a ideia de **redundância**: ter uma alternativa para reduzir a dependência
+de um único serviço. Ela depende da disponibilidade e da capacidade do provedor
+alternativo para atender à operação.
+
+## O que significa envolver uma stablecoin?
+
+O cBRL funciona como uma representação de outro ativo. Esse modelo também é
+chamado de *wrap*: a stablecoin usada como lastro fica em reserva, enquanto o
+usuário recebe o valor correspondente em cBRL na carteira.
+
+Por exemplo, no modelo 1:1, 100 unidades de uma stablecoin de real dão lastro
+a 100 cBRL, antes de eventuais taxas. No resgate, os cBRL correspondentes saem
+de circulação e o lastro é liberado conforme as regras da operação.
+
+Isso permite apresentar um saldo em reais na Conta sem exigir que o usuário
+lide com cada integração de stablecoin separadamente.
+
+## O que a paridade significa
+
+A referência de 1:1 orienta a emissão e o resgate. O valor líquido de uma operação
+pode incluir taxas, e a capacidade de resgatar depende das reservas, dos
+emissores e das condições de funcionamento do sistema.
+
+O cBRL preserva essa ligação com o ativo de lastro; ele também carrega os riscos
+desse ativo. Por isso, a análise de segurança inclui tanto os contratos do cBRL
+quanto as reservas e os emissores das stablecoins que o sustentam.
+
+Agora sabemos por que a Conta usa cBRL. A próxima pergunta é o que está por trás dele.
+
+A seguir: [BRLA, BRS e as reservas dos emissores →](/docs/dinheiro/lastro)

@@ -1,0 +1,46 @@
+---
+title: BRLA, BRS and reserves
+description: Understand the layers between cBRL and the assets supporting its value.
+---
+
+The previous page introduced cBRL as a way to work with different providers.
+Now let's meet two real-denominated stablecoins in that model: BRLA and BRS.
+
+cBRL's backing has layers. Knowing each layer's role helps you understand
+which information to check and who is responsible for publishing it.
+
+| Layer | Role |
+| --- | --- |
+| cBRL in the wallet | Represents the user's digital balance. |
+| Backing stablecoin | Supports the corresponding issuance of cBRL. |
+| Issuer reserves | Support the value of the stablecoin used as backing. |
+
+## BRLA
+
+**Avenia** describes BRLA as a fully backed stablecoin, pegged 1:1 to the real,
+with reserve disclosures. It reports reserves held in Brazilian government
+bonds and regulated custody.
+See [BRLA's official information](https://avenia.io/brla).
+
+## BRS
+
+**Nora** describes BRS as a fully reserved stablecoin with a 1:1 reference to
+the real, with issuance and redemption through participants in its network.
+See [BRS's official information](https://www.nora.finance/).
+
+## How to interpret this information
+
+BRLA is the configured backing asset in the current Base deployment of cBRL.
+BRS illustrates another real-denominated stablecoin compatible with the model;
+its description here does not mean that it already backs cBRL in this deployment.
+The asset actually used matters when assessing an issuance.
+
+Network records help verify tokens and contract movements, but cannot by
+themselves prove financial reserves held off-chain. For that layer, consult
+the information and attestations published by the issuer. cBRL preserves the connection to the asset used and
+also depends on its redemption conditions.
+
+You've followed the balance all the way to its backing. What if you want to
+set some of that balance aside for later?
+
+Next: [vaults and your Reserve →](/en/docs/vaults)

@@ -1,7 +1,31 @@
 # conta-docs
 
-Documentação técnica pública da [Conta](https://conta.vc) — publicada em
+Documentação pública da [Conta](https://conta.vc) — publicada em
 `docs.conta.vc`.
+
+O conteúdo apresenta a Conta ao público externo, incluindo possíveis usuários
+e investidores. Explica autocustódia, o lastro do cBRL, segurança e a conexão
+com PIX e cripto em linguagem simples. Os repositórios `contavc/conta`,
+`contavc/conta-backend`, `contavc/conta-contracts` e `contavc/conta-magic-router`
+são fontes para conferir o comportamento do produto. A documentação é
+organizada como uma leitura guiada: carteira e autocustódia, saldo e cBRL,
+BRLA/BRS, Reserva (vaults), Magic Swap e transferências.
+A mensagem central é mais propriedade e controle sobre o dinheiro
+do dia a dia. Não inclui modelo de negócio, captação ou planos da empresa.
+
+Os quatro capítulos numerados seguem o caminho do dinheiro, com transições entre
+as páginas, exemplos e fontes. Apresentação do produto, comparação com bancos, preços, instruções de
+acesso e guias de PIX/dólares ficam em conta.vc; use links para essas páginas,
+sem duplicar o conteúdo nos docs.
+Métricas de usuários e volume ficam fora até a definição de quais publicar.
+
+O cBRL permite reduzir a dependência de um único provedor, mantendo a mesma
+experiência de saldo ao integrar alternativas compatíveis. Ele representa
+stablecoins de real, como BRLA e BRS; não deve ser apresentado
+como uma stablecoin regulada pelo governo. A comparação de segurança deve
+explicar as diferenças de controle e transparência, considerando também as
+regras dos tokens e a dependência dos emissores. As fontes e os limites das
+afirmações estão em [docs/content-sources.md](docs/content-sources.md).
 
 Site estático de docs construído com **Fumadocs** sobre **Next.js 16**. É um
 repositório independente do app: nada aqui depende do código privado da Conta,
@@ -41,8 +65,8 @@ o antigo `middleware.ts` chama-se `proxy.ts`.
 Cada página tem dois arquivos:
 
 ```
-content/docs/seguranca.mdx      → português (padrão)
-content/docs/seguranca.en.mdx   → inglês
+content/docs/dinheiro/cbrl.mdx      → português (padrão)
+content/docs/dinheiro/cbrl.en.mdx   → inglês
 ```
 
 O mesmo vale para a navegação: `meta.json` e `meta.en.json`.

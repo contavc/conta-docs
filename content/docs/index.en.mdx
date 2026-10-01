@@ -1,59 +1,44 @@
 ---
-title: Overview
-description: What Conta is, what it guarantees technically, and how this documentation is organised.
+title: Start here
+description: Follow your money through Conta, from your wallet to saving and moving it.
 ---
 
-Conta is a **self-custodial Brazilian payments account**. Users send and
-receive PIX — Brazil's instant payment system — as usual, but the balance is
-not a number in a database we control. It is a balance in **BRLA**, a
-stablecoin backed 1:1 by the Brazilian real, held on-chain in the **user's own
-wallet** on **Base**.
+Understanding Conta starts with a simple question: **what does it mean to
+have control over your money?** To answer it, we'll follow the money: where
+you hold it, what gives your balance its value, and what happens when you
+save or move it.
 
-The practical difference fits in one sentence:
+You don't need to know about crypto to follow along. Each chapter builds
+on the one before it.
 
-<Callout title="The core guarantee">
-Conta never holds the user's private key and therefore never holds their
-money. This is not an internal policy promise — it is a consequence of the
-architecture, verifiable on-chain by anyone.
-</Callout>
+## 1. Start with your wallet
 
-## Who this is for
+Your wallet is the starting point. Learn what non-custodial means and how
+your authorisation relates to the money you hold.
 
-For people who would rather audit the claim above than take it on faith. It
-describes how the product actually works: the custody model, how each PIX rail
-executes, what happens when something fails midway, and which technology
-choices hold it all up.
+[Start with wallets and self-custody →](/en/docs/seguranca)
 
-This is not a public API reference — Conta does not currently expose an API to
-third parties. It is a description of how the system works internally.
+## 2. Understand your balance
 
-## The four facts that define the system
+Next, look at the money in that wallet. We introduce balances and
+stablecoins, explain why Conta uses cBRL, then meet BRLA and BRS and the
+reserves behind them.
 
-<Cards>
-  <Card title="Passkey authentication" description="No password, no seed phrase. The wallet key is created and used via Privy, gated by device biometrics." />
-  <Card title="On-chain balance" description="BRLA (ERC-20, 18 decimals, 1:1 BRL) on Base, in the user's own EOA. The displayed balance is read from the chain, not from a database." />
-  <Card title="Real PIX on both ends" description="Money enters and leaves over PIX through Hodle, which converts between reais and BRLA at the edges of the system." />
-  <Card title="Visible failure, never silent" description="Ambiguous states freeze for manual review rather than risk a double payment." />
-</Cards>
+[Explore your balance →](/en/docs/dinheiro)
 
-## How money crosses the system
+## 3. Set money aside
 
-```mermaid
-flowchart LR
-  A["PIX payer"] -->|PIX| B["Hodle"]
-  B -->|BRLA on-chain| C["User wallet<br/>EOA on Base"]
-  C -->|BRLA on-chain| D["Conta's Hodle wallet"]
-  D -->|PIX| E["PIX recipient"]
-```
+Once you understand cBRL, a vault is easier to picture: a separate place
+for the cBRL you want to save. This is your Reserve in Conta.
 
-The middle segment — the user's wallet — is the only place money sits still,
-and it is not ours. The ends are in-transit conversion funnels, not custody.
+[Meet your Reserve →](/en/docs/vaults)
 
-## Where to start
+## 4. Move money
 
-<Cards>
-  <Card href="/en/docs/arquitetura" title="Architecture" description="Principles, custody model, and what lives on-chain versus in the database." />
-  <Card href="/en/docs/rails" title="PIX rails" description="On-ramp, off-ramp, QR-pay, P2P and money links — step by step, failure modes included." />
-  <Card href="/en/docs/seguranca" title="Security" description="Threat model, on-chain verifiable addresses, and what a compromise of Conta would and would not allow." />
-  <Card href="/en/docs/stack" title="Stack" description="The technologies used and the reasoning behind each choice." />
-</Cards>
+Money can arrive in a different asset. Magic Swap connects eligible crypto
+to your balance in reais. From there, we look at sending money to others.
+
+[Understand Magic Swap →](/en/docs/pagamentos/magic-swap)
+
+For product information, [prices](https://www.conta.vc/precos) or
+[help using the app](https://www.conta.vc/ajuda), visit Conta's main website.

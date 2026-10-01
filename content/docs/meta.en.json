@@ -2,11 +2,9 @@
   "title": "Documentation",
   "pages": [
     "index",
-    "arquitetura",
-    "rails",
-    "---Reference---",
-    "dolares",
-    "stack",
-    "seguranca"
+    "seguranca",
+    "dinheiro",
+    "vaults",
+    "pagamentos"
   ]
 }

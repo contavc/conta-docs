@@ -20,11 +20,11 @@ const newsreader = Newsreader({
 export const metadata: Metadata = {
   metadataBase: new URL("https://docs.conta.vc"),
   title: {
-    default: "Conta — documentação técnica",
+    default: "Conta — documentação",
     template: "%s · Conta docs",
   },
   description:
-    "Como a Conta funciona por dentro: autocustódia, rails PIX em BRLA na Base, e as escolhas de tecnologia por trás delas.",
+    "Entenda a Conta: autocustódia, o lastro do cBRL em stablecoins de real, segurança e transparência para o seu dinheiro.",
 };
 
 export default async function RootLayout({
