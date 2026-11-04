@@ -1,5 +1,39 @@
 # Editorial sources
 
+## Explorer guide — 2026-11-04
+
+The support-shareable `/docs/basescan-e-etherscan` guide is available in both
+configured locales (Portuguese and English). Its short introduction covers
+where to check a balance; optional accordions explain explorer fields without
+making the reader follow the full guided sequence.
+
+External primary references reviewed:
+
+- [What is BaseScan?](https://info.etherscan.com/what-is-basescan/): Base records,
+  public lookups, no custody or control of funds by the explorer.
+- [What is Etherscan?](https://kb.etherscan.com/what-is-etherscan): Ethereum records
+  and the explorer's role as an independent public-data index.
+- [Viewing Transactions](https://info-optimistic.etherscan.io/txs/): status,
+  token-transfer participants, native ETH value and network fee fields. These
+  shared Etherscan-style fields explain why native Value can be zero for a token
+  transfer and why top-level To may refer to a contract.
+- [Pending transactions](https://info.etherscan.com/what-is-a-pending-transaction/)
+  and [failed transactions](https://support.etherscan.com/support/solutions/articles/69000793836-what-are-the-reasons-for-failed-transactions-):
+  inclusion and execution states; failed attempts can incur network fees.
+
+Conta-specific statements follow the existing wallet, balance, Reserve and
+receipt pages. cBRL represents the real-denominated balance; the personal
+Reserve has its own associated address. Explorer success describes the linked
+on-chain transaction, not every step of a Pix payment. The guide does not promise
+receipt of a Pix payment, a refund, settlement time or that an explorer balance
+equals all money available in the app. It does not prescribe an unverified UI
+button or claim Conta supports every network listed as an explorer example.
+
+Accordions and their titles are reduced to readable text in the search index,
+so the optional explanations remain searchable without raw JSX.
+
+## Existing product evidence
+
 The public docs explain Conta's main concepts to prospective users and investors.
 Repository names and implementation details belong here, not in the reader's journey.
 
