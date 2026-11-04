@@ -1,7 +1,13 @@
 ---
-title: "BaseScan and Etherscan: where is my money?"
-description: Understand the link support sent you, check a transaction and learn what each status means.
+title: Where is my money?
+description: Understand the link support sent you.
 ---
+
+Cryptocurrencies are sent and received over networks. Base, Ethereum and Solana are different networks. Your asset balances and movements are recorded on those networks, associated with wallet addresses.
+
+Each network has an explorer that works like a **public statement**. A wallet address lets you look up its history on that network; a hash (the transaction ID) lets you look up a specific transaction.
+
+**Important:** unfamiliar tokens and transactions may be spam or scam attempts. Do not open promotional links associated with them, connect your wallet or sign approvals to claim them. Simply appearing in the statement does not give them access to your wallet.
 
 <Callout title="Just want to check your money?">
   Start with your **balance and history in Conta**. If you received a BaseScan or
@@ -10,49 +16,41 @@ description: Understand the link support sent you, check a transaction and learn
   websites; they display the records.
 </Callout>
 
-## What are these websites?
+Public statements for these networks are available at:
 
-BaseScan and Etherscan are **blockchain explorers**: websites for looking up a
-network's public records. Think of them as a way to view transaction history,
-with details you can check beyond the app.
-
-Assets are recorded at addresses on the network, such as your wallet or Reserve
-address. The explorer lets you look up those records.
-
-| Website | Network it shows |
+| Website | Network |
 | --- | --- |
-| [BaseScan](https://basescan.org) | Base |
-| [Etherscan](https://etherscan.io) | Ethereum |
+| [basescan.org](https://basescan.org) | Base |
+| [etherscan.io](https://etherscan.io) | Ethereum |
+| [solscan.io](https://solscan.io) | Solana |
 
-Each network has its own records. A transaction on Base should be checked using
-a Base explorer. Not finding it on Ethereum does not mean the money disappeared.
+Each network has its own records. A transaction on Base should be checked in a Base explorer (“public statement”). Not finding it on Ethereum does not mean the money disappeared: check that you searched the correct network.
 
 **You do not need to create an account or connect your wallet to look up records.**
 
-## How to check the link you received
+## How to read the public statement
 
-If the link opens a **transaction**, check these three things:
+The link opens an explorer (“public statement”) for one of the networks.
 
-1. **Status:** see whether the transaction executed, is pending or failed.
-2. **Tokens Transferred:** check the asset, amount and destination address.
-   For token transfers, this is where to check who received the asset.
-3. **Timestamp:** compare the date and time with the transaction you are looking for.
+We use a Base wallet as the example here. Other explorers have different layouts but offer similar information.
 
-| Status on the page | What it means |
-| --- | --- |
-| **Success** | The transaction executed on the network. Check the asset, amount and destination too. |
-| **Pending** | The transaction is still waiting to be included on the network. |
-| **Failed / Reverted** | This execution failed. Check your Conta history before trying again. |
+| Label | Where to look | What it means |
+| --- | --- | --- |
+| **A** | Address at the top and in the URL | Identifies the wallet whose statement is open. |
+| **B** | Token Holdings | Estimated dollar value of tokens the explorer can price. It may not include every asset. |
+| **C** | Token Transfers (ERC-20) | Tab showing token movements on Base. |
+| **D** | Transaction Hash | Transaction ID. Select it to open the details. |
+| **E** | Age / time | Select or hover to check the date and time. Check the displayed time zone: when it is UTC, Brasília is three hours behind (UTC−3); other Brazilian regions use different time zones. |
+| **F** | From / To and OUT / IN | From is the source; To is the destination. OUT means outgoing and IN incoming relative to the wallet being viewed. |
+| **G** | Value (USD) / Token | Estimated dollar value and the asset moved. Check the token quantity too; the dollar estimate is not a balance in reais or a redemption guarantee. |
 
 <Callout title="For Pix payments">
-  **“Success” on the explorer alone does not prove the recipient received the
-  Pix payment.** The record may represent one blockchain step. Check the payment
-  status in your Conta history too.
+  A confirmed token transfer lets you check the movement between the recorded
+  addresses. Check the asset, amount and destination in the details:
+  **“Success” alone does not prove a Pix payment reached its recipient**.
+  If the operation involves Pix, also follow the payment status in your Conta
+  history.
 </Callout>
-
-If the link opens a **wallet**, it shows that address's assets and history on
-the selected network. Look for the token list to check the assets; the ETH
-balance does not represent everything held at that address.
 
 ## Questions about the page
 
