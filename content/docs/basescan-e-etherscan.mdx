@@ -1,7 +1,13 @@
 ---
-title: "BaseScan e Etherscan: onde está meu dinheiro?"
-description: Entenda o link enviado pelo suporte, confira uma movimentação e saiba o que significa cada status.
+title: Onde está meu dinheiro?
+description: Entenda o link que o suporte te passou.
 ---
+
+As criptomoedas são enviadas e recebidas por redes. Base, Ethereum e Solana são redes diferentes. Os saldos e as movimentações dos seus ativos ficam registrados nessas redes, associados a endereços de carteiras.
+
+Cada rede tem seu explorador, que funciona como um **extrato público**. Com o endereço de uma carteira, você consulta seu histórico naquela rede; com a hash (o ID da transação), consulta uma transação específica.
+
+**Importante:** tokens e transações desconhecidos podem ser spam ou tentativas de fraude. Não abra links promocionais associados a eles, não conecte sua carteira e não assine aprovações para resgatá-los. Apenas aparecerem no extrato não lhes dá acesso à sua carteira.
 
 <Callout title="Só quer conferir seu dinheiro?">
   Veja seu **saldo e o histórico na Conta**. Se recebeu um link do BaseScan ou do
@@ -10,50 +16,52 @@ description: Entenda o link enviado pelo suporte, confira uma movimentação e s
   nesses sites; eles mostram os registros.
 </Callout>
 
-## O que são esses sites?
-
-BaseScan e Etherscan são **exploradores de blockchain**: sites para consultar os
-registros públicos de uma rede. Pense neles como uma consulta ao histórico de
-movimentações, com detalhes que você pode conferir além do app.
-
-Os ativos ficam registrados em endereços na rede, como o da sua carteira ou o
-da sua Reserva. O explorador permite consultar esses registros.
+Os extratos públicos das redes citadas são:
 
 | Site | Rede consultada |
 | --- | --- |
-| [BaseScan](https://basescan.org) | Base |
-| [Etherscan](https://etherscan.io) | Ethereum |
+| [basescan.org](https://basescan.org) | Base |
+| [etherscan.io](https://etherscan.io) | Ethereum |
+| [solscan.io](https://solscan.io) | Solana |
 
-Cada rede tem seus próprios registros. Uma movimentação na Base deve ser
-consultada em um explorador da Base. Não encontrá-la no Ethereum não significa
-que o dinheiro desapareceu.
+Cada rede tem seus próprios registros. Uma movimentação na rede Base deve ser consultada no explorador (“extrato público”) da Base. Não encontrá-la no Ethereum não significa que o dinheiro desapareceu: confira se pesquisou na rede correta.
 
 **Você não precisa criar uma conta nem conectar sua carteira para consultar.**
 
-## Como conferir o link que recebeu
+## Como ler o extrato público
 
-Se o link abre uma **transação**, confira estes três pontos:
+O link vai abrir o explorador (“extrato público”) de uma das redes.
 
-1. **Status:** veja se a transação foi executada, está pendente ou falhou.
-2. **Tokens Transferred:** confira o ativo, a quantidade e o endereço de destino.
-   Em transferências de tokens, esse é o lugar para conferir quem recebeu.
-3. **Timestamp:** compare a data e o horário com a movimentação que procura.
+Aqui usamos uma carteira na Base como exemplo. Outros exploradores têm formatos diferentes, mas permitem consultar informações semelhantes.
 
-| Status na página | O que significa |
-| --- | --- |
-| **Success** | A transação foi executada na rede. Confira também o ativo, o valor e o destino. |
-| **Pending** | A transação ainda aguarda inclusão na rede. |
-| **Failed / Reverted** | Essa execução falhou. Confira o histórico na Conta antes de tentar novamente. |
+### A–C: visão geral da carteira
+
+![BaseScan: A, B, C.](/images/guides/basescan-wallet-abc.png)
+
+| Marca | Onde olhar | O que significa |
+| --- | --- | --- |
+| **A** | Endereço no topo e na URL | Identifica a carteira cujo extrato está aberto. |
+| **B** | Token Holdings | Estimativa do valor em dólares dos tokens que o explorador consegue precificar. Pode não incluir todos os ativos. |
+| **C** | Token Transfers (ERC-20) | Aba para consultar as movimentações de tokens na Base. |
+
+### D–G: movimentações de tokens
+
+![BaseScan: D, E, F, G.](/images/guides/basescan-transfers-defg.png)
+
+| Marca | Onde olhar | O que significa |
+| --- | --- | --- |
+| **D** | Transaction Hash | ID da transação. Selecione para abrir seus detalhes. |
+| **E** | Age / horário | Selecione ou passe o cursor para conferir a data e a hora. Confira o fuso exibido: quando for UTC, Brasília está três horas atrás (UTC−3); outras regiões do Brasil têm fusos diferentes. |
+| **F** | From / To e OUT / IN | From é a origem; To é o destino. OUT indica saída e IN indica entrada em relação à carteira consultada. |
+| **G** | Value (USD) / Token | Valor estimado em dólares e ativo movimentado. Confira também a quantidade de tokens; a estimativa em dólares não é um saldo em reais nem garantia de resgate. |
 
 <Callout title="Se for um Pix">
-  **“Success” no explorador, sozinho, não comprova que o destinatário recebeu o
-  Pix.** O registro pode corresponder a uma etapa na blockchain. Acompanhe também
-  o estado do pagamento no histórico da Conta.
+  Uma transferência de tokens confirmada permite conferir o movimento entre os
+  endereços registrados. Confira o ativo, o valor e o destino nos detalhes:
+  **“Success” sozinho não comprova que um Pix chegou ao destinatário**.
+  Se a operação envolve Pix, acompanhe também o estado do pagamento no histórico
+  da Conta.
 </Callout>
-
-Se o link abre uma **carteira**, ele mostra os ativos e o histórico daquele
-endereço na rede consultada. Procure a lista de tokens para conferir os ativos;
-o saldo em ETH não representa tudo o que existe naquele endereço.
 
 ## Dúvidas ao olhar a página
 
