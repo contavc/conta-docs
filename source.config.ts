@@ -43,10 +43,17 @@ export default defineConfig({
               .join(" — ");
           }
 
-          // containerFlow só aceita elemento de bloco; Callout inline cai no default.
-          if (node.name === "Callout" && node.type === "mdxJsxFlowElement") {
+          // containerFlow só aceita elemento de bloco; JSX inline cai no default.
+          if (
+            (node.name === "Callout" || node.name === "Accordion") &&
+            node.type === "mdxJsxFlowElement"
+          ) {
             const body = state.containerFlow(node, info);
             return [attr(node, "title"), body].filter(Boolean).join("\n");
+          }
+
+          if (node.name === "Accordions" && node.type === "mdxJsxFlowElement") {
+            return state.containerFlow(node, info);
           }
 
           return undefined;

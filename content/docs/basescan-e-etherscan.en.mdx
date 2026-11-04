@@ -1,0 +1,106 @@
+---
+title: "BaseScan and Etherscan: where is my money?"
+description: Understand the link support sent you, check a transaction and learn what each status means.
+---
+
+<Callout title="Just want to check your money?">
+  Start with your **balance and history in Conta**. If you received a BaseScan or
+  Etherscan link, it lets you check the network record: **what moved, to which
+  address, and the transaction's status**. Your money is not held on these
+  websites; they display the records.
+</Callout>
+
+## What are these websites?
+
+BaseScan and Etherscan are **blockchain explorers**: websites for looking up a
+network's public records. Think of them as a way to view transaction history,
+with details you can check beyond the app.
+
+Assets are recorded at addresses on the network, such as your wallet or Reserve
+address. The explorer lets you look up those records.
+
+| Website | Network it shows |
+| --- | --- |
+| [BaseScan](https://basescan.org) | Base |
+| [Etherscan](https://etherscan.io) | Ethereum |
+
+Each network has its own records. A transaction on Base should be checked using
+a Base explorer. Not finding it on Ethereum does not mean the money disappeared.
+
+**You do not need to create an account or connect your wallet to look up records.**
+
+## How to check the link you received
+
+If the link opens a **transaction**, check these three things:
+
+1. **Status:** see whether the transaction executed, is pending or failed.
+2. **Tokens Transferred:** check the asset, amount and destination address.
+   For token transfers, this is where to check who received the asset.
+3. **Timestamp:** compare the date and time with the transaction you are looking for.
+
+| Status on the page | What it means |
+| --- | --- |
+| **Success** | The transaction executed on the network. Check the asset, amount and destination too. |
+| **Pending** | The transaction is still waiting to be included on the network. |
+| **Failed / Reverted** | This execution failed. Check your Conta history before trying again. |
+
+<Callout title="For Pix payments">
+  **“Success” on the explorer alone does not prove the recipient received the
+  Pix payment.** The record may represent one blockchain step. Check the payment
+  status in your Conta history too.
+</Callout>
+
+If the link opens a **wallet**, it shows that address's assets and history on
+the selected network. Look for the token list to check the assets; the ETH
+balance does not represent everything held at that address.
+
+## Questions about the page
+
+<Accordions type="single">
+  <Accordion title="It says 0 ETH. Has my money disappeared?" value="zero-eth" id="zero-eth">
+    The **Value** field in ETH shows how much ETH was sent in that transaction.
+    A transfer of another asset, such as cBRL or USDC, can show **0 ETH** while
+    still moving that asset. Check **Tokens Transferred** to see what moved.
+  </Accordion>
+
+  <Accordion title="Why does it show cBRL instead of reais?" value="cbrl" id="cbrl">
+    cBRL is the digital asset behind the balance shown in reais in Conta. Its
+    model aims to represent R$1 per unit. Read more about
+    [your balance and stablecoins](/en/docs/dinheiro).
+  </Accordion>
+
+  <Accordion title="I put money in my Reserve. Where does it appear?" value="reserva" id="reserva">
+    Your Reserve has its own address, linked to your wallet. Money you set aside
+    can appear at that address rather than in your wallet's available balance.
+    See [how your Reserve works](/en/docs/vaults).
+  </Accordion>
+
+  <Accordion title="The To address is not the person's address. Why?" value="destino" id="destino">
+    **To** or **Interacted With (To)** may identify a contract used in the
+    operation. For a token transfer, check the recipient under
+    **Tokens Transferred**. If you do not recognise the destination, ask support
+    for help.
+  </Accordion>
+
+  <Accordion title="What is Transaction Fee? Do I need to pay to look this up?" value="taxa" id="taxa">
+    **Transaction Fee** is the cost of processing the transaction on the network.
+    It can apply even when an attempt fails. This field is not a payment request
+    to you. **Looking up the page is free** and does not require sending money
+    or approving a transaction.
+  </Accordion>
+
+  <Accordion title="I cannot find the transaction or the balance looks wrong. What now?" value="suporte" id="suporte">
+    Check that you are looking at the correct network. If you still need help,
+    send Conta support the **link or Transaction Hash**, the **expected amount**
+    and the **approximate time**. The hash is the code that identifies the
+    transaction. For a Pix payment, include the receipt. Check what happened
+    before repeating the payment.
+  </Accordion>
+</Accordions>
+
+**You do not need to share passwords, passkeys or private keys to check a
+record.** The link can reveal amounts, addresses and public transaction history;
+share these details with care.
+
+Read also: [Your wallet and self-custody](/en/docs/seguranca) ·
+[Payment links and receipts](/en/docs/pagamentos/receber-e-comprovantes).
